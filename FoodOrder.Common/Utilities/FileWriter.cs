@@ -10,11 +10,9 @@ namespace FoodOrder.Common.Utilities
         public static async Task<string> WriteFile(this IFormFile file, string url)
         {
             if (file is null)
-            {
                 return null;
-            }
             try
-            {    
+            {
                 var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
                 string fileNamelocal = Path.GetRandomFileName() + extension;
                 var path = Path.Combine(Directory.GetCurrentDirectory(), url, fileNamelocal);
@@ -27,7 +25,7 @@ namespace FoodOrder.Common.Utilities
             }
             catch (Exception)
             {
-                //TO DO:Add Elmah
+                //TO DO:Log
                 return null;
             }
         }

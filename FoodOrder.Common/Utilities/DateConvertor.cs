@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace FoodOrder.Common.Utilities
 {
@@ -12,7 +10,7 @@ namespace FoodOrder.Common.Utilities
             PersianCalendar pc = new PersianCalendar();
             return pc.GetYear(value) + "/" + pc.GetMonth(value).ToString("00") + "/" + pc.GetDayOfMonth(value).ToString("00");
         }
-        public static string GetTimeFromDateTime(this DateTime value)
+        public static string GetShamsiTime(this DateTime value)
         {
             PersianCalendar pc = new PersianCalendar();
             return pc.GetHour(value).ToString("00") + ":" + pc.GetMinute(value).ToString("00");

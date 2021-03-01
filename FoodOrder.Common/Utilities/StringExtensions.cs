@@ -105,19 +105,14 @@ namespace FoodOrder.Common.Utilities
         {
             return str?.Length == 0 ? null : str;
         }
-        public static string FixEmailAndMobile(this string str)
-        {
-            return str.Trim().ToLower().Fa2En();/*.NullIfEmpty();*/
-        }
         public static string GenerateRandomString()
         {
-            return Guid.NewGuid().ToString().Replace("-", "");
+            return Guid.NewGuid().ToString().Replace("-", "").Replace(".", "");
         }
-        public static string GenerateRandomNumber()
+        public static string GenerateRandomNumber(int minValue,int maxValue)
         {
-            Random random = new Random();
-            int RandomNumber = random.Next(1000, 9000);
-            return RandomNumber.ToString();
+            var random = new Random();
+            return random.Next(minValue, maxValue).ToString();
         }
     }
 }
