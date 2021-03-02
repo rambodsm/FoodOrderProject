@@ -8,7 +8,7 @@ namespace FoodOrder.WebFramework.Configuration
 {
     public static class IdentityConfigurationExtensions
     {
-        public static void AddCustomIdentity(this IServiceCollection services, IdentitySetting settings)
+        public static void AddCustomIdentity(this IServiceCollection services, IdentitySettings settings)
         {
             services.AddIdentity<User, Role>(identityOptions =>
             {

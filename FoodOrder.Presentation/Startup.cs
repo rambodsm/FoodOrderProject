@@ -14,20 +14,21 @@ namespace FoodOrder.Presentation
 {
     public class Startup
     {
-        private readonly SiteSetting _siteSetting;
+        private readonly SiteSettings _siteSetting;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _siteSetting = configuration.GetSection(nameof(SiteSetting)).Get<SiteSetting>();
+            _siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
         }
 
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<SiteSetting>(Configuration.GetSection(nameof(SiteSetting)));
+            services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
             services.AddDbContext(Configuration);
             services.AddCustomIdentity(_siteSetting.IdentitySettings);
             services.AddMinimalMvc();
+            services.AddSwaggerGen();
             //services.AddJwtAuthentication(_siteSetting.JwtSettings);
             #region IoC
             services.AddTransient<IUserRepository, UserRepository>();
@@ -54,7 +55,14 @@ namespace FoodOrder.Presentation
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSwagger();
 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers(); // Map attribute routing

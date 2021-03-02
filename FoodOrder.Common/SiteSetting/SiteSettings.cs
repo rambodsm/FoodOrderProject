@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace FoodOrder.Common.SiteSettings
 {
-    public class SiteSetting
+    public class SiteSettings
     {
         public string ElmahPath { get; set; }
-        public JwtSetting JwtSettings { get; set; }
-        public IdentitySetting IdentitySettings { get; set; }
+        public JwtSettings JwtSettings { get; set; }
+        public IdentitySettings IdentitySettings { get; set; }
     }
 
-    public class IdentitySetting
+    public class IdentitySettings
     {
         public bool PasswordRequireDigit { get; set; }
         public int PasswordRequiredLength { get; set; }
@@ -22,7 +22,7 @@ namespace FoodOrder.Common.SiteSettings
         public bool PasswordRequireLowercase { get; set; }
         public bool RequireUniqueEmail { get; set; }
     }
-    public class JwtSetting
+    public class JwtSettings
     {
         public string SecretKey { get; set; }
         public string EncryptKey { get; set; }
