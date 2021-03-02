@@ -17,6 +17,8 @@ namespace FoodOrder.Domain.Restuarants
         }
         public string Name { get; set; }
         public string Address { get; set; }
+        public decimal Lat { get; set; }
+        public decimal Long { get; set; }
         public string Description { get; set; }
         public string ImgName { get; set; }
         public string Telephone { get; set; }
@@ -25,7 +27,10 @@ namespace FoodOrder.Domain.Restuarants
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
 
+        public Guid? UserId { get; set; }
+
         #region Relations
+        public User User { get; set; }
         public List<Menu> Menus { get; set; }
         public List<Coupon> Coupons { get; set; }
         public List<OpeningHours> OpeningHours { get; set; }
@@ -45,6 +50,10 @@ namespace FoodOrder.Domain.Restuarants
             builder.Property(p => p.Description).HasMaxLength(500).IsRequired();
             builder.Property(p => p.Telephone).HasMaxLength(15).IsRequired();
             builder.Property(p => p.ImgName).HasMaxLength(500).IsRequired();
+            builder.Property(p => p.Lat).HasPrecision(9, 6);
+            builder.Property(p => p.Long).HasPrecision(8, 6);
+
+            builder.HasOne(p => p.User).WithMany(p => p.Restuarants).HasForeignKey(p => p.UserId);
         }
     }
 
