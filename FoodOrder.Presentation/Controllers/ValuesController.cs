@@ -1,4 +1,5 @@
 ﻿using FoodOrder.Domain.Users;
+using FoodOrder.Service.Contracts;
 using FoodOrder.WebFramework.API;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,12 @@ namespace FoodOrder.Presentation.Controllers
 {
     public class ValuesController : BaseController
     {
+        private IUserService _userService { get; set; }
+        public ValuesController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [HttpGet("Test1")]
         public IActionResult Test()
         {

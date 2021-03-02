@@ -1,4 +1,8 @@
 using FoodOrder.Common.SiteSettings;
+using FoodOrder.Infrastructure.Contracts;
+using FoodOrder.Infrastructure.Repositories.User;
+using FoodOrder.Service.Contracts;
+using FoodOrder.Service.Services;
 using FoodOrder.WebFramework.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +29,10 @@ namespace FoodOrder.Presentation
             services.AddCustomIdentity(_siteSetting.IdentitySettings);
             services.AddMinimalMvc();
             //services.AddJwtAuthentication(_siteSetting.JwtSettings);
+            #region IoC
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
+            #endregion
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
