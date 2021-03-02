@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FoodOrder.Application\FoodOrder.Application.csproj" />
-    <ProjectReference Include="..\FoodOrder.Domain\FoodOrder.Domain.csproj" />
-    <ProjectReference Include="..\FoodOrder.Infrastructure\FoodOrder.Infrastructure.csproj" />
+    <ProjectReference Include="..\FoodOrder.WebFramework\FoodOrder.WebFramework.csproj" />
   </ItemGroup>
 
 </Project>

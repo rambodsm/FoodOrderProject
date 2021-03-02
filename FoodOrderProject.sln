@@ -15,27 +15,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{13E7BA65-6
 		Test.txt = Test.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Presentation", "FoodOrder.Presentation\FoodOrder.Presentation.csproj", "{22CDDC17-2600-491C-8282-71611C02A039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Presentation", "FoodOrder.Presentation\FoodOrder.Presentation.csproj", "{22CDDC17-2600-491C-8282-71611C02A039}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4425291B-355E-4E98-93CE-E56BE7C42791} = {4425291B-355E-4E98-93CE-E56BE7C42791}
 		{0718FF75-9A30-4768-8254-63853CC179F2} = {0718FF75-9A30-4768-8254-63853CC179F2}
 		{616C1FAC-FA26-42AF-BD4B-F603494E42B6} = {616C1FAC-FA26-42AF-BD4B-F603494E42B6}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Application", "FoodOrder.Application\FoodOrder.Application.csproj", "{616C1FAC-FA26-42AF-BD4B-F603494E42B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Application", "FoodOrder.Application\FoodOrder.Application.csproj", "{616C1FAC-FA26-42AF-BD4B-F603494E42B6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4425291B-355E-4E98-93CE-E56BE7C42791} = {4425291B-355E-4E98-93CE-E56BE7C42791}
 		{0718FF75-9A30-4768-8254-63853CC179F2} = {0718FF75-9A30-4768-8254-63853CC179F2}
+		{437435AA-84AD-4B56-9F19-0E7CBF17F97A} = {437435AA-84AD-4B56-9F19-0E7CBF17F97A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Domain", "FoodOrder.Domain\FoodOrder.Domain.csproj", "{4425291B-355E-4E98-93CE-E56BE7C42791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Domain", "FoodOrder.Domain\FoodOrder.Domain.csproj", "{4425291B-355E-4E98-93CE-E56BE7C42791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Infrastructure", "FoodOrder.Infrastructure\FoodOrder.Infrastructure.csproj", "{0718FF75-9A30-4768-8254-63853CC179F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Infrastructure", "FoodOrder.Infrastructure\FoodOrder.Infrastructure.csproj", "{0718FF75-9A30-4768-8254-63853CC179F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4425291B-355E-4E98-93CE-E56BE7C42791} = {4425291B-355E-4E98-93CE-E56BE7C42791}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Common", "FoodOrder.Common\FoodOrder.Common.csproj", "{437435AA-84AD-4B56-9F19-0E7CBF17F97A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrder.Common", "FoodOrder.Common\FoodOrder.Common.csproj", "{437435AA-84AD-4B56-9F19-0E7CBF17F97A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.WebFramework", "FoodOrder.WebFramework\FoodOrder.WebFramework.csproj", "{D4B0EB12-0DE1-447A-8097-5902C108272E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Service", "FoodOrder.Service\FoodOrder.Service.csproj", "{EC570F13-0D7D-46AD-869C-504A87B62DFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +68,14 @@ Global
 		{437435AA-84AD-4B56-9F19-0E7CBF17F97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{437435AA-84AD-4B56-9F19-0E7CBF17F97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{437435AA-84AD-4B56-9F19-0E7CBF17F97A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B0EB12-0DE1-447A-8097-5902C108272E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B0EB12-0DE1-447A-8097-5902C108272E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B0EB12-0DE1-447A-8097-5902C108272E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B0EB12-0DE1-447A-8097-5902C108272E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC570F13-0D7D-46AD-869C-504A87B62DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC570F13-0D7D-46AD-869C-504A87B62DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC570F13-0D7D-46AD-869C-504A87B62DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC570F13-0D7D-46AD-869C-504A87B62DFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +86,8 @@ Global
 		{4425291B-355E-4E98-93CE-E56BE7C42791} = {0A7F8B4B-5B29-475C-97A4-3BEEB2799595}
 		{0718FF75-9A30-4768-8254-63853CC179F2} = {0A7F8B4B-5B29-475C-97A4-3BEEB2799595}
 		{437435AA-84AD-4B56-9F19-0E7CBF17F97A} = {0A7F8B4B-5B29-475C-97A4-3BEEB2799595}
+		{D4B0EB12-0DE1-447A-8097-5902C108272E} = {0A7F8B4B-5B29-475C-97A4-3BEEB2799595}
+		{EC570F13-0D7D-46AD-869C-504A87B62DFB} = {0A7F8B4B-5B29-475C-97A4-3BEEB2799595}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4922A908-CCC4-4E94-85FD-09391148B6E1}
