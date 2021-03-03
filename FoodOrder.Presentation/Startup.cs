@@ -1,3 +1,4 @@
+using AutoMapper;
 using FoodOrder.Common.SiteSettings;
 using FoodOrder.Infrastructure.Contracts;
 using FoodOrder.Infrastructure.Repositories.User;
@@ -29,6 +30,7 @@ namespace FoodOrder.Presentation
             services.AddCustomIdentity(_siteSetting.IdentitySettings);
             services.AddMinimalMvc();
             services.AddSwaggerGen();
+            services.AddAutoMapper(typeof(AutomapperProfileConfiguration).Assembly);
             //services.AddJwtAuthentication(_siteSetting.JwtSettings);
             #region IoC
             services.AddTransient<IUserRepository, UserRepository>();

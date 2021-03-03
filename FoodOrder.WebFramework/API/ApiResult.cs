@@ -58,7 +58,6 @@ namespace FoodOrder.WebFramework.API
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public TData Data { get; set; }
-
         public ApiResult(ApiResultStatusCode statusCode, TData data, string message = null)
             : base(statusCode, message)
         {
@@ -113,4 +112,5 @@ namespace FoodOrder.WebFramework.API
         }
         #endregion
     }
+
 }

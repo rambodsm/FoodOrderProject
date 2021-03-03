@@ -49,6 +49,7 @@ namespace FoodOrder.Domain.Users
             builder.Property(p => p.PasswordHash).IsRequired();
             builder.Property(p => p.Lat).HasPrecision(9, 6);
             builder.Property(p => p.Long).HasPrecision(8, 6);
+            builder.Property(p => p.ConcurrencyStamp).IsConcurrencyToken();
         }
     }
 
