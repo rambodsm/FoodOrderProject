@@ -34,6 +34,7 @@ namespace FoodOrder.Domain.Users
         public List<UserRestuarantFavorite> UserRestuarantFavorites { get; set; }
         public List<Restuarant> Restuarants { get; set; }
         public List<Rider> Riders { get; set; }
+        public List<RefreshToken> RefreshTokens { get; set; }
         #endregion
     }
 

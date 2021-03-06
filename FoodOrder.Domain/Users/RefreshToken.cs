@@ -1,4 +1,6 @@
 ﻿using FoodOrder.Domain.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +26,20 @@ namespace FoodOrder.Domain.Users
         public DateTime ExpiryDate { get; set; }
 
         public Guid? UserId { get; set; }
+
         #region Relations
         public User User { get; set; }
         #endregion
-
     }
+    #region EntityConfiguration
+
+    public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
+    {
+        public void Configure(EntityTypeBuilder<RefreshToken> builder)
+        {
+            builder.HasOne(p => p.User).WithMany(p => p.RefreshTokens).HasForeignKey(p => p.UserId);
+        }
+    }
+
+    #endregion
 }
