@@ -7,6 +7,7 @@ namespace FoodOrder.WebFramework.API
     [ApiController]
     [ApiResultFilter]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class BaseController : ControllerBase
     {
         //public bool UserIsAutheticated => HttpContext.User.Identity.IsAuthenticated;

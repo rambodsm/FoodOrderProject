@@ -1,10 +1,12 @@
 ﻿using FoodOrder.Domain.Users;
 using FoodOrder.Service.Contracts;
 using FoodOrder.WebFramework.API;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.Presentation.Controllers
 {
+    [Authorize]
     public class ValuesController : BaseController
     {
         private IUserService _userService { get; set; }
@@ -24,6 +26,7 @@ namespace FoodOrder.Presentation.Controllers
             return Ok();
         }
         [HttpGet("Test5")]
+        [AllowAnonymous]
         public IActionResult Test5()
         {
             var user = new User();

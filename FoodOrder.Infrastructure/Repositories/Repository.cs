@@ -1,6 +1,5 @@
 ﻿using FoodOrder.Common.Utilities;
 using FoodOrder.Domain.Common;
-using FoodOrder.Infrastructure.Contracts;
 using FoodOrder.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -24,42 +23,42 @@ namespace FoodOrder.Infrastructure.Repositories
         }
 
         #region Async Method
-        public virtual ValueTask<TEntity> GetByIdAsync(CancellationToken cancellationToken, params object[] ids)
+        public virtual async Task<TEntity> GetByIdAsync(CancellationToken cancellationToken, params object[] ids)
         {
-            return Entities.FindAsync(ids, cancellationToken);
-        }
 
+            return await Entities.FindAsync(ids, cancellationToken);
+        }
         public virtual async Task AddAsync(TEntity entity, CancellationToken cancellationToken)
         {
             Assert.NotNull(entity, nameof(entity));
-            await Entities.AddAsync(entity, cancellationToken).ConfigureAwait(false);
+            await Entities.AddAsync(entity, cancellationToken);
         }
 
-        public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken, bool saveNow = true)
+        public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             Assert.NotNull(entities, nameof(entities));
-            await Entities.AddRangeAsync(entities, cancellationToken).ConfigureAwait(false);
+            await Entities.AddRangeAsync(entities, cancellationToken);
         }
 
-        public virtual void Update(TEntity entity, CancellationToken cancellationToken)
+        public virtual void Update(TEntity entity)
         {
             Assert.NotNull(entity, nameof(entity));
             Entities.Update(entity);
         }
 
-        public virtual void UpdateRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+        public virtual void UpdateRange(IEnumerable<TEntity> entities)
         {
             Assert.NotNull(entities, nameof(entities));
             Entities.UpdateRange(entities);
         }
 
-        public virtual void Delete(TEntity entity, CancellationToken cancellationToken)
+        public virtual void Delete(TEntity entity)
         {
             Assert.NotNull(entity, nameof(entity));
             Entities.Remove(entity);
         }
 
-        public virtual void DeleteRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+        public virtual void DeleteRange(IEnumerable<TEntity> entities)
         {
             Assert.NotNull(entities, nameof(entities));
             Entities.RemoveRange(entities);

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FoodOrder.Infrastructure.Contracts
+namespace FoodOrder.Infrastructure.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {
@@ -16,12 +16,12 @@ namespace FoodOrder.Infrastructure.Contracts
         void Add(TEntity entity);
         Task AddAsync(TEntity entity, CancellationToken cancellationToken);
         void AddRange(IEnumerable<TEntity> entities);
-        Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken, bool saveNow = true);
-        void Delete(TEntity entity, CancellationToken cancellationToken);
-        void DeleteRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
+        Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
+        void Delete(TEntity entity);
+        void DeleteRange(IEnumerable<TEntity> entities);
         TEntity GetById(params object[] ids);
-        ValueTask<TEntity> GetByIdAsync(CancellationToken cancellationToken, params object[] ids);
-        void Update(TEntity entity, CancellationToken cancellationToken);
-        void UpdateRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
+        Task<TEntity> GetByIdAsync(CancellationToken cancellationToken, params object[] ids);
+        void Update(TEntity entity);
+        void UpdateRange(IEnumerable<TEntity> entities);
     }
 }

@@ -1,8 +1,9 @@
-using AutoMapper;
 using FoodOrder.Common.SiteSettings;
 using FoodOrder.Infrastructure.Contracts;
 using FoodOrder.Infrastructure.Repositories.User;
+using FoodOrder.Infrastructure.UnitOfWork;
 using FoodOrder.Service.Contracts;
+using FoodOrder.Service.CustomMapping;
 using FoodOrder.Service.Services;
 using FoodOrder.WebFramework.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -29,12 +30,15 @@ namespace FoodOrder.Presentation
             services.AddDbContext(Configuration);
             services.AddCustomIdentity(_siteSetting.IdentitySettings);
             services.AddMinimalMvc();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(option=> {option.EnableAnnotations();});
             services.AddAutoMapper(typeof(AutomapperProfileConfiguration).Assembly);
-            //services.AddJwtAuthentication(_siteSetting.JwtSettings);
+            services.AddJwtAuthentication(_siteSetting.JwtSettings);
             #region IoC
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtService, JwtService>();
             #endregion
         }
 
@@ -58,16 +62,13 @@ namespace FoodOrder.Presentation
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // Map attribute routing
+                endpoints.MapControllers();
                 //    .RequireAuthorization(); Apply AuthorizeFilter as global filter to all endpoints
             });
         }

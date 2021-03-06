@@ -16,6 +16,8 @@ namespace FoodOrder.Domain.Users
         {
             Id = Guid.NewGuid();
             IsActive = true;
+            EmailConfirmed = false;
+            
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
