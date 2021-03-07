@@ -14,6 +14,7 @@ namespace FoodOrder.Service.Contracts
         Task<OperationResult<AccessToken>> GetTokenAsync(LoginUserViewModel model);
         Task<User> GetUserByIdAsync(Guid userId, CancellationToken cancellationToken);
         Task<OperationResult<CreateUserViewModel>> GetUserInformationByIdAsync(Guid userId);
+        Task<OperationResult<AccessToken>> RefreshTokenAsync(TokenRequestViewModel model);
         Task UpdateLastLoginDateAsync(User user);
     }
 }

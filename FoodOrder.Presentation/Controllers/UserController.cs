@@ -16,6 +16,7 @@ namespace FoodOrder.Presentation.Controllers
         {
             _service = service;
         }
+
         [HttpPost]
         [SwaggerOperation(Summary ="Create User",Description = "Gender number 1 is Male and Gender number 2 is Female")]
         [SwaggerResponse(200,"Create User was Success")]
@@ -29,6 +30,7 @@ namespace FoodOrder.Presentation.Controllers
                 return BadRequest(result.ErrorMessage);
             return Ok();
         }
+
         [HttpGet("{userId:Guid}")]
         [SwaggerOperation(Summary = "Get User")]
         [SwaggerResponse(200, "Operation was success")]
@@ -42,6 +44,7 @@ namespace FoodOrder.Presentation.Controllers
                 return BadRequest("کاربر مورد نظر یافت نشد");
             return Ok(result.Result);
         }
+
         [HttpPost("[action]")]
         [SwaggerOperation(Summary ="Get Access And Refresh Token",Description ="Username can be Email,UserName,Phone")]
         [SwaggerResponse(200, "Operation was success")]
@@ -53,6 +56,19 @@ namespace FoodOrder.Presentation.Controllers
             if (result.Success is false)
                 return BadRequest(result.ErrorMessage);
             return Ok(result.Result);
+        }
+
+        [HttpPost("[action]")]
+        [SwaggerOperation(Summary = "Get New Refresh Token")]
+        [SwaggerResponse(200, "Operation was success")]
+        [SwaggerResponse(400, "Access or RefreshToken was wrong")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RefreshToken(TokenRequestViewModel tokenRequest)
+        {
+            var refreshToken = await _service.RefreshTokenAsync(tokenRequest);
+            if (refreshToken.Success is false)
+                return BadRequest(refreshToken.ErrorMessage);
+            return Ok(refreshToken.Result);
         }
     }
 }

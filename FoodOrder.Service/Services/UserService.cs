@@ -79,6 +79,9 @@ namespace FoodOrder.Service.Services
                 return OperationResult<User>.BuildFailure("نام کاربری یا رمز عبور اشتباه می باشد");
             return OperationResult<User>.BuildSuccessResult(user);
         }
-        
+        public async Task<OperationResult<AccessToken>> RefreshTokenAsync(TokenRequestViewModel model)
+        {
+            return await _jwtService.VerifyAndGenerateAsync(model);
+        }
     }
 }
